@@ -1,6 +1,5 @@
 "use client";
 import { useState } from 'react';
-import styles from './styles/styles.css';
 import SearchBar from './components/searchBar';
 import BookList from './components/bookList';
 

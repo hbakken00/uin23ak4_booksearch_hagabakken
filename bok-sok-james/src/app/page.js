@@ -1,15 +1,20 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+import { useState } from 'react';
+import styles from './styles/styles.css';
+import SearchBar from './components/searchBar';
+import BookList from './components/bookList';
 
 export default function Home() {
+  const [books, setBooks] = useState([]);
+
   return (
- 
-
- <section>
-  <h2> James Bond Bøker </h2>
-  
-
- </section>
-
+    
+    <body>
+    <main>
+      <br></br>
+      <SearchBar setBooks={setBooks} />
+      <BookList books={books} />
+    </main>
+    </body>
   );
 }

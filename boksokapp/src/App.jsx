@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import SearchBar from './components/searchBar';
 import BookList from './components/bookList';
+import BookDetails from './components/bookDetails';
 import './styles/style.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -24,16 +26,29 @@ function App() {
   }, []);
 
   return (
-    <body>
-      
+
+    
     
     <main>
     <div className="App">
+      
       <SearchBar onSearch={fetchBooks} />
       <BookList books={books} />
+    
+     
+      <Routes>
+         
+
+      
+          <Route path="/" element={<BookList books={books} />} />
+          <Route path="/book/works/:id" element={<BookDetails />} />
+      
+      </Routes>
+
+      
     </div>
     </main>
-    </body>
+   
   );
 }
 

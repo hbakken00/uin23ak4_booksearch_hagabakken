@@ -1,23 +1,21 @@
 // søkefelt
-import React, { useState } from "react";
+import React, { useState } from "react"
 
 const SearchBar = ({ onSearch }) => {
-  const [query, setQuery] = useState("");
-
+  const [query, setQuery] = useState("")
+  
+  // funksjon for å håpndtere søk
   const handleSearch = (event) => {
-    // funksjon for å håpndtere søk
-    event.preventDefault();
+    event.preventDefault()
 
     if (query.length < 3) {
       // if test for å sjekke om det minimum  er 3 bokstaver skrvet inn
+      alert("Søket må inneholde minst 3 bokstaver")
+      return
+    } onSearch(query)
+  }
 
-      alert("Søket må inneholde minst 3 bokstaver");
-      return;
-    } onSearch(query); 
-  };
-
- 
-
+  
   return (
     // returnerer html for søkefelt og knapp
     <div id="sokeBox">
@@ -35,9 +33,13 @@ const SearchBar = ({ onSearch }) => {
           {" "}
           <a>Søk</a>{" "}
         </button>
+        <button id="Knapphjem" type="submit">
+          {" "}
+        <a href="/"> Reset / hjem </a>
+        </button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default SearchBar;
+export default SearchBar

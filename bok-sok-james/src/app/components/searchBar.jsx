@@ -1,20 +1,16 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+
+
 
 const SearchBar = ({ setBooks }) => {
   const [query, setQuery] = useState("");
+  const [pageisLoaded, setpageisLoaded] = useState(true); // state for å tracke onload 
 
-  const handleSearch = (event) => {
-    event.preventDefault();
-
-    if (query.length < 3) {
-      alert("Søket må inneholde minst 3 bokstaver");
-      return;
-    }
-
-    const searchURL = `https://openlibrary.org/search.json?q=${encodeURIComponent(
-      query
-    )}`;
+  // fetch funksjon for å hente bøker
+  const fetchBooks = (searchQuery) => {
+    const searchURL = `https://openlibrary.org/search.json?q=${encodeURIComponent(searchQuery)}`;
 
     fetch(searchURL)
       .then((response) => {
@@ -32,6 +28,32 @@ const SearchBar = ({ setBooks }) => {
       });
   };
 
+  // effekt hook for å hente james bond på onload
+  useEffect(() => {
+    if (pageisLoaded) {
+      fetchBooks("James Bond");
+      setpageisLoaded(false); 
+    }
+  }, [pageisLoaded]); 
+  const handleSearch = (event) => {
+    event.preventDefault();
+
+  // effekt hook for å hente james bond på onload  
+
+
+
+  // if test for å sjekke om søket inneholder minst 3 bokstaver
+    if (query.length < 3) {
+      alert("Søket må inneholde minst 3 bokstaver");
+      return;
+    }
+  // if test for å sjekke om søket inneholder minst 3 bokstaver
+
+
+
+    fetchBooks(query); // bruker fetchBooks funksjonen for søkefunksjonaliteten ellers 
+  };
+
   return (
     <div id="sokeBox">
       <div id="overskrift">
@@ -45,12 +67,13 @@ const SearchBar = ({ setBooks }) => {
           onChange={(e) => setQuery(e.target.value)}
         />
         <button id="Knapp" type="submit">
-          {" "}
-          <a>Søk</a>
+          Søk
         </button>
       </form>
     </div>
   );
 };
+
+
 
 export default SearchBar;

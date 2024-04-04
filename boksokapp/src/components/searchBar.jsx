@@ -18,10 +18,12 @@ const SearchBar = ({ onSearch }) => {
   
   return (
     // returnerer html for søkefelt og knapp
-    <div id="sokeBox">
-      <div id="overskrift">
+    
+    <section id="sokeBox">
+      <section id="overskrift">
         <h2>Boksøk App</h2>
-      </div>
+      
+      </section>
       <form onSubmit={handleSearch}>
         <input
           type="text"
@@ -33,12 +35,13 @@ const SearchBar = ({ onSearch }) => {
           {" "}
           <a>Søk</a>{" "}
         </button>
-        <button id="Knapphjem" type="submit">
+        <button   onClick={() => window.location.reload()}  id="Knapphjem" type="submit"> 
           {" "}
         <a href="/"> Reset / hjem </a>
+        
         </button>
       </form>
-    </div>
+    </section>
   )
 }
 

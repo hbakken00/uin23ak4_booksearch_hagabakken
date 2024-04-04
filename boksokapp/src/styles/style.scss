@@ -32,6 +32,7 @@ form {
     gap: 2rem;
     justify-content: center;
     padding-top: 5%;
+    border: 1px solid #000000;
     padding: 10px;
     margin: 10px;
   }
@@ -299,18 +300,16 @@ form {
   }
   
 
-  #BokDetaljer {
-
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      padding-top: 5%;
-      border: 1px solid #000000;
-      padding: 10px;
-      margin: 10px;
-      background-color: #9ccca2;
-  }
+ #BokDetaljer {
+  position: sticky;
+  top: 0; /* Juster denne verdi for å endre hvor langt fra toppen elementet skal "klebe" */
+  z-index: 10; /* Sørg for at det legger seg over annet innhold */
+  background-color: #43d1fc; /* eller annen ønsket bakgrunnsfarge */
+  padding: 20px; /* Juster etter behov */
+  margin: 20px 0; /* Juster etter behov */
+  border-radius: 8px; /* Estetikk */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
 
 
 

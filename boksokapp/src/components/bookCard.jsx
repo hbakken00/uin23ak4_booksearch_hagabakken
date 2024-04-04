@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const BookCard = ({ book }) => {
+const BookCard = ({ book, valgtBok }) => {
 const { title, first_publish_year, author_name, cover_i, key, ratings_average } = book;
 
 const bookId = book.key.split("/").pop();
@@ -23,7 +23,7 @@ const bookId = book.key.split("/").pop();
   return (
     // returnerer html i individuelle bok-kort med data fra api
 
-    <div id="bookdata">
+    <article id="bookdata" onClick={() => valgtBok(book.key.split("/").pop())}>
    
       <img src={coverImageUrl} alt={`Cover of ${title}`} />
 
@@ -42,7 +42,7 @@ const bookId = book.key.split("/").pop();
         to={{
           pathname: `/book/works/${bookId}`,
           state: { cover_i, firstPublishYear: first_publish_year },}}>Mer om boken her!</Link>
-    </div>
+    </article>
   );
 };
 

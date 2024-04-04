@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+
 
 function BookDetails() {
   const { id } = useParams()
   const [bookDetails, setBookDetails] = useState(null)
 
-  // Accessing the passed "first published" year and cover_i from location state
- 
- 
- 
+  const navigate = useNavigate();
+
+  const handleClose = () => {
+    navigate("/"); // Naviger tilbake til hovedsiden
+  }
+
   useEffect(() => {
     // fetcher fra work API først 
     fetch(`https://openlibrary.org/works/${id}.json`)
@@ -54,7 +58,7 @@ function BookDetails() {
  
 
   return (
-    <div id='BokDetaljer'>   
+    <article id='BokDetaljer'>   
       <section>
      
       <h1>{bookDetails.title}</h1>
@@ -65,9 +69,14 @@ function BookDetails() {
       {bookDetails.author_name && <p>{bookDetails.author_name.join(', ')}</p>}
       {bookDetails.description && <p>{typeof bookDetails.description === 'string' ? bookDetails.description : bookDetails.description.value}</p>}
       {bookDetails.subjects && <p>{bookDetails.subjects.join(', ')}</p>}
+      
+      <button id="Knapphjem" type="submit" onClick={handleClose}>
+<a href="/">Lukk</a>
+        
+        </button>
       </section>
 
-    </div>
+    </article>
   )
 }
 

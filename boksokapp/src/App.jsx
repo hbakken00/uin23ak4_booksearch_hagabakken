@@ -4,6 +4,8 @@ import BookList from "./components/bookList";
 import BookDetails from "./components/bookDetails";
 import "./styles/style.css";
 import { Routes, Route } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; 
+
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -35,18 +37,26 @@ function App() {
       fetchBooks("James Bond");
     }
   }, [initialLoad]);
+  
+  
+  const navigate = useNavigate(); // bruker useNavigate nav
+
+  const valgtBok = (bookId) => {
+    navigate(`/book/works/${bookId}`)
+  }
+
 
   
   return (
     <main>
       <div className="App">
-        <SearchBar onSearch={fetchBooks} />
+        <SearchBar onSearch={fetchBooks}  />
 
         <Routes>
           <Route path="/book/works/:id" element={<BookDetails />} />
         </Routes>
-
-        <BookList books={books} />
+        
+        <BookList books={books} onSelectBook={valgtBok} /> {/* Legg til onSelectBook-prop */}
       </div>
     </main>
   );

@@ -33,7 +33,6 @@ function App() {
   // hook for å hente james bond bøkene først som bare kjører hvis setInitialLoad er true
   useEffect(() => {
     if (initialLoad) {
-      // Condition to ensure fetch only happens once
       fetchBooks("James Bond");
     }
   }, [initialLoad]);
@@ -44,9 +43,6 @@ function App() {
   const valgtBok = (bookId) => {
     navigate(`/book/works/${bookId}`)
   }
-
-
-  
   return (
     <main>
       <div className="App">
@@ -56,7 +52,7 @@ function App() {
           <Route path="/book/works/:id" element={<BookDetails />} />
         </Routes>
         
-        <BookList books={books} onSelectBook={valgtBok} /> {/* Legg til onSelectBook-prop */}
+        <BookList books={books}/> 
       </div>
     </main>
   );

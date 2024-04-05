@@ -51,7 +51,7 @@ function BookDetails() {
   if (!bookDetails) return <h4> laster inn ... </h4>
 
   
-  const coverImageUrl = bookDetails.cover_i
+  const coverImageUrl = bookDetails.cover_i 
     ? `https://covers.openlibrary.org/b/id/${bookDetails.cover_i}-M.jpg`
     : '/path/to/default/image.jpg'
 

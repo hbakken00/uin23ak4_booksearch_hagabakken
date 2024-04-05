@@ -35,7 +35,7 @@ const bookId = book.key.split("/").pop();
 
       {book.ratings_average && <p> Gjennomsnittlig score: {book.ratings_average} / 5</p>}
 
-      <a id="Amazonlink"href={amazonSearchUrl}target="_blank"rel="noopener noreferrer">Amazon Link</a>
+      <a id="Amazonlink"href={amazonSearchUrl}target="_blank"rel="noopener noreferrer">  Amazon Link</a>
 
       <Link
         id="merom"

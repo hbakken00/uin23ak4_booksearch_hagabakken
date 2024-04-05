@@ -38,11 +38,7 @@ function App() {
   }, [initialLoad]);
   
   
-  const navigate = useNavigate(); // bruker useNavigate nav
 
-  const valgtBok = (bookId) => {
-    navigate(`/book/works/${bookId}`)
-  }
   return (
     <main>
       <div className="App">
